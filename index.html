@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Códigos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contador de Códigos</h1>
+        <h6>Criado por Lucas Gonçalves & ChatGPT</h6>
+        
+
+        <!-- Campo de Input -->
+        <input type="text" id="eanInput" placeholder="Digite o código EAN" autofocus>
+        <!-- Resumo de Total -->
+        <div class="summary">
+            <p>Total de códigos digitalizados: <span id="totalCount">0</span></p>
+        </div>
+
+        <!-- Botões: Exportar, Copiar, Limpar e Imprimir -->
+        <div class="buttons">
+            <button id="exportBtn" disabled>Baixar em .txt</button>
+            <button id="copyBtn" disabled>Copiar</button>
+            <button id="clearBtn" disabled>Limpar lista</button>
+        <!-- implementar <button id="printBtn" disabled>Imp. Barcode</button>-->
+        </div>
+
+        <!-- Lista de EANs -->
+        <ul id="eanList"></ul>
+    </div>
+
+    <!-- Popup de Edição de Quantidade -->
+    <div id="editPopup" class="popup">
+        <div class="popup-content">
+            <h3>Editar Quantidade</h3>
+            <div>
+                <button id="decreaseQuantity">-</button>
+                <input type="number" id="editQuantity" min="1">
+                <button id="increaseQuantity">+</button>
+                
+            </div>
+            <div>
+                <button id="saveQuantity">Salvar</button>
+                <button id="cancelEdit">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção para Impressão -->
+    <div id="printSection" style="display: none;">
+        <h1>Impressão de Códigos de Barras</h1>
+        <div id="barcodeList"></div>
+        <button onclick="window.print()">Imprimir</button>
+        <button onclick="closePrintSection()">Fechar</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
